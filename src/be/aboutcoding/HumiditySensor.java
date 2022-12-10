@@ -1,5 +1,8 @@
 package be.aboutcoding;
 
+/**
+ * This could possibly be another implementation. A different kind of sensor with yet another way of versioning.
+ */
 public class HumiditySensor implements Sensor{
 
     private static final String VALID_FIRMWARE_VERSION = "99";

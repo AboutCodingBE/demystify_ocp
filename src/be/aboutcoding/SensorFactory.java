@@ -4,6 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * This is just a means to get sensor objects into our process. In real life (this is after all based on something simple
+ * I had to do in real life), instead of a factory, this could be a class parsing sensor information coming from a 3rd party
+ * source. For example, the source could be API, it could be a csv file, ... The purpose of this class is solely to create
+ * sensor objects, no matter if the infomration is made up or would come from a real life API or something.
+ * could
+ */
+
 public class SensorFactory {
     public List<Sensor> getTemperatureSensors(int[] ids) {
         List<Sensor> sensors = new ArrayList<>(ids.length);
