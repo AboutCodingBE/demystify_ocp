@@ -19,7 +19,6 @@ public class SensorValidationProcess {
     private static final String VALID_FIRMWARE_VERSION = "59.1.12Rev4";
 
     public void start(int... ids) {
-        //step 1: fetch the target sensors with the given ids
         var temperatureSensors = new ArrayList<TemperatureSensor>(ids.length);
         for (int id : ids) {
             Random randomGenerator = new Random();
