@@ -41,24 +41,18 @@ public class SensorValidationProcess {
             temperatureSensors.add(new TemperatureSensor(id, version, make, model));
         }
 
-        List<Boolean> result = new ArrayList<>();
-        for (TemperatureSensor sensor : temperatureSensors) {
-            if (VALID_FIRMWARE_VERSION.equals(sensor.getCurrentFirmwareVersion())) {
-                result.add(true);
+        var result = new ArrayList<TemperatureSensor>();
+        for (var sensor : temperatureSensors) {
+            if (!VALID_FIRMWARE_VERSION.equals(sensor.getCurrentFirmwareVersion())) {
+                var currentVersion = new SemanticVersion(sensor.getCurrentFirmwareVersion());
+                var validVersion = new SemanticVersion(VALID_FIRMWARE_VERSION);
+                if (!currentVersion.isEqualOrLargerThan(validVersion)) {
+                    result.add(sensor);
+                }
             }
-
-            var currentVersion = new SemanticVersion(sensor.getCurrentFirmwareVersion());
-            var validVersion = new SemanticVersion(VALID_FIRMWARE_VERSION);
-
-            result.add(currentVersion.isEqualOrLargerThan(validVersion));
         }
 
-        long amountInvalid = result.stream()
-                .filter(isValid -> isValid.equals(false))
-                .count();
-
-        System.out.println("There are " + amountInvalid +
-                " sensors with invalid firmware.");
+        result.forEach(sensor -> System.out.println(sensor.getId() + " is invalid"));
     }
 
     private static class SemanticVersion {

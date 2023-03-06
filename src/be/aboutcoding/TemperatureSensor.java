@@ -20,7 +20,7 @@ public class TemperatureSensor {
         this.model = model;
     }
 
-    private int getId() {
+    public int getId() {
         return this.id;
     }
 
