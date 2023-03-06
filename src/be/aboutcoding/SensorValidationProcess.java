@@ -8,18 +8,17 @@ import java.util.Random;
  * This is basically the main 'algorithm'. There are more places in this algorithm where you potentially could use the
  * OCP. However, since there currently are no other variations except for the difference in versioning of the sensor
  * firmware, I would say that proactively adding interfaces here would not benefit the code at all.
- *
+ * <p>
  * As for the 'hasValidFirmwareVersion()' example:
  * You can think of an interface as some kind of pivot point for change: the method or methods in an interface will stay
  * pretty much the same, but you can have several implementations which can be swapped at runtime. That means that this code,
  * this process code in this class, doesn't have to change if we would need another way of validating a firmware version.
- *
  */
 public class SensorValidationProcess {
 
     private static final String VALID_FIRMWARE_VERSION = "59.1.12Rev4";
 
-    public void start(int...ids) {
+    public void start(int... ids) {
         //step 1: fetch the target sensors with the given ids
         var temperatureSensors = new ArrayList<TemperatureSensor>(ids.length);
         for (int id : ids) {
