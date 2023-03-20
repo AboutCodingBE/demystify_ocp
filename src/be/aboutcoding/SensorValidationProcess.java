@@ -34,18 +34,18 @@ public class SensorValidationProcess {
             temperatureSensors.add(new Sensor(id, version, make, model));
         }
 
-        var result = new ArrayList<Sensor>();
+        var invalidSensors = new ArrayList<Sensor>();
         for (var sensor : temperatureSensors) {
             if (!VALID_FIRMWARE_VERSION.equals(sensor.getCurrentFirmwareVersion())) {
                 var currentVersion = new SemanticVersion(sensor.getCurrentFirmwareVersion());
                 var validVersion = new SemanticVersion(VALID_FIRMWARE_VERSION);
                 if (!currentVersion.isEqualOrLargerThan(validVersion)) {
-                    result.add(sensor);
+                    invalidSensors.add(sensor);
                 }
             }
         }
 
-        result.forEach(sensor -> System.out.println(sensor.getId() + " is invalid"));
+        invalidSensors.forEach(sensor -> System.out.println(sensor.getId() + " is invalid"));
     }
 
     private static class SemanticVersion {
