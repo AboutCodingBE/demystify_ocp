@@ -1,25 +1,18 @@
 package be.aboutcoding;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 /**
- * This is basically the main 'algorithm'. There are more places in this algorithm where you potentially could use the
- * OCP. However, since there currently are no other variations except for the difference in versioning of the sensor
- * firmware, I would say that proactively adding interfaces here would not benefit the code at all.
- * <p>
- * As for the 'hasValidFirmwareVersion()' example:
- * You can think of an interface as some kind of pivot point for change: the method or methods in an interface will stay
- * pretty much the same, but you can have several implementations which can be swapped at runtime. That means that this code,
- * this process code in this class, doesn't have to change if we would need another way of validating a firmware version.
+ * This would be basic solution to the validation problem. Very simple: there is the validation algorithm, the main class
+ * to start the application and something that represents a sensor.
  */
 public class SensorValidationProcess {
 
     private static final String VALID_FIRMWARE_VERSION = "59.1.12Rev4";
 
     public void start(int... ids) {
-        var temperatureSensors = new ArrayList<TemperatureSensor>(ids.length);
+        var temperatureSensors = new ArrayList<Sensor>(ids.length);
         for (int id : ids) {
             Random randomGenerator = new Random();
             var make = "ProSense";
@@ -38,10 +31,10 @@ public class SensorValidationProcess {
 
             System.out.println("Id: " + id + " has version: " + version);
 
-            temperatureSensors.add(new TemperatureSensor(id, version, make, model));
+            temperatureSensors.add(new Sensor(id, version, make, model));
         }
 
-        var result = new ArrayList<TemperatureSensor>();
+        var result = new ArrayList<Sensor>();
         for (var sensor : temperatureSensors) {
             if (!VALID_FIRMWARE_VERSION.equals(sensor.getCurrentFirmwareVersion())) {
                 var currentVersion = new SemanticVersion(sensor.getCurrentFirmwareVersion());

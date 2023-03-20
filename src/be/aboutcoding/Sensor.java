@@ -4,7 +4,7 @@ package be.aboutcoding;
  * This is an implementation of the 'Sensor' interface. This implementation will provide us details that will tell us
  * how to accomplish what is wanted.
  */
-public class TemperatureSensor {
+public class Sensor {
 
     private static final String VALID_FIRMWARE_VERSION = "59.1.12Rev4";
 
@@ -13,7 +13,7 @@ public class TemperatureSensor {
     private final String make;
     private final String model;
 
-    public TemperatureSensor(int id, String firmwareVersion, String make, String model) {
+    public Sensor(int id, String firmwareVersion, String make, String model) {
         this.id = id;
         this.currentFirmwareVersion = firmwareVersion;
         this.make = make;
