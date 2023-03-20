@@ -53,6 +53,7 @@ public class TemperatureSensor implements Sensor {
 
         SemanticVersion(String version) {
             this.rawVersion = version;
+            parse();
         }
 
         void parse() {
