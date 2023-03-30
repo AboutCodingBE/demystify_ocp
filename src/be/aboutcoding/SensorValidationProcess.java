@@ -8,7 +8,6 @@ import java.util.ArrayList;
  */
 public class SensorValidationProcess {
 
-    private static final String VALID_FIRMWARE_VERSION = "59.1.12Rev4";
     private SensorRepository repository = new SensorRepository();
 
     public void start(int... ids) {
