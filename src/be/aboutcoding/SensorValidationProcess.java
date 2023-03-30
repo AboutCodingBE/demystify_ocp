@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * This would be basic solution to the validation problem. Very simple: there is the validation algorithm, the main class
+ * This would be a basic solution to the validation problem. Very simple: there is the validation algorithm, the main class
  * to start the application and something that represents a sensor.
  */
 public class SensorValidationProcess {
