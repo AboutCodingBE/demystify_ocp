@@ -88,7 +88,7 @@ public class Sensor {
             if (this.major > other.major) {
                 return true;
             }
-            if (this.major == other.major && this.major > other.minor) {
+            if (this.major == other.major && this.minor > other.minor) {
                 return true;
             }
             if (this.major == other.major && this.minor == other.minor && this.patch > other.patch) {
