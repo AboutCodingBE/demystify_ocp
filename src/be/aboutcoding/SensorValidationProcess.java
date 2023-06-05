@@ -1,8 +1,11 @@
 package be.aboutcoding;
 
-import be.aboutcoding.domain.Sensor;
+import be.aboutcoding.domain.FirmwareValidation;
+import be.aboutcoding.domain.TemperatureSensor;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * This would be basic solution to the validation problem. Very simple: there is the validation algorithm, the main class
@@ -17,8 +20,8 @@ public class SensorValidationProcess {
         var temperatureSensors = repository.getSensorsWithIdIn(ids);
 
         //Step 2: validate all sensors
-        var invalidSensors = new ArrayList<Sensor>();
-        for (var sensor : temperatureSensors) {
+        var invalidSensors = new ArrayList<>();
+        for (FirmwareValidation sensor : temperatureSensors) {
             if (!sensor.hasValidFirmware()) {
                 invalidSensors.add(sensor);
             }

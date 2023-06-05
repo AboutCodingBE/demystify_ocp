@@ -1,14 +1,14 @@
 package be.aboutcoding;
 
-import be.aboutcoding.domain.Sensor;
+import be.aboutcoding.domain.TemperatureSensor;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 class SensorRepository {
 
-    public ArrayList<Sensor> getSensorsWithIdIn(int[] ids) {
-        var temperatureSensors = new ArrayList<Sensor>(ids.length);
+    public ArrayList<TemperatureSensor> getSensorsWithIdIn(int[] ids) {
+        var temperatureSensors = new ArrayList<TemperatureSensor>(ids.length);
         for (int id : ids) {
             Random randomGenerator = new Random();
             var make = "ProSense";
@@ -27,7 +27,7 @@ class SensorRepository {
 
             System.out.println("Id: " + id + " has version: " + version);
 
-            temperatureSensors.add(new Sensor(id, version, make, model));
+            temperatureSensors.add(new TemperatureSensor(id, version, make, model));
         }
         return temperatureSensors;
     }
