@@ -1,5 +1,7 @@
 package be.aboutcoding;
 
+import be.aboutcoding.domain.Sensor;
+
 import java.util.ArrayList;
 
 /**

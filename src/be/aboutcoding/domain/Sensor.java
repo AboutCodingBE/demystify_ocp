@@ -1,10 +1,10 @@
-package be.aboutcoding;
+package be.aboutcoding.domain;
 
 /**
  * This is an implementation of the 'Sensor' interface. This implementation will provide us details that will tell us
  * how to accomplish what is wanted.
  */
-public class Sensor {
+public class Sensor implements FirmwareValidation {
 
     private static final String VALID_FIRMWARE_VERSION = "59.1.12Rev4";
 
