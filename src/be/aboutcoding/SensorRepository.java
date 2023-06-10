@@ -5,6 +5,7 @@ import be.aboutcoding.domain.TemperatureSensor;
 import java.util.ArrayList;
 import java.util.Random;
 
+//TODO: live fixing
 class SensorRepository {
 
     public ArrayList<TemperatureSensor> getSensorsWithIdIn(int[] ids) {
