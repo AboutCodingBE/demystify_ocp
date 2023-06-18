@@ -1,5 +1,6 @@
 package be.aboutcoding;
 
+import be.aboutcoding.domain.FirmwareValidation;
 import be.aboutcoding.domain.TemperatureSensor;
 
 import java.util.ArrayList;
@@ -8,8 +9,8 @@ import java.util.Random;
 //TODO: live fixing
 class SensorRepository {
 
-    public ArrayList<TemperatureSensor> getSensorsWithIdIn(int[] ids) {
-        var temperatureSensors = new ArrayList<TemperatureSensor>(ids.length);
+    public ArrayList<FirmwareValidation> getSensorsWithIdIn(int[] ids) {
+        var temperatureSensors = new ArrayList<FirmwareValidation>(ids.length);
         for (int id : ids) {
             Random randomGenerator = new Random();
             var make = "ProSense";

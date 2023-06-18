@@ -36,13 +36,13 @@ public class TemperatureSensor implements FirmwareValidation {
         return currentFirmwareVersion;
     }
 
-    public boolean hasValidFirmware() {
+    public ValidationResult hasValidFirmware() {
         if (!VALID_FIRMWARE_VERSION.equals(currentFirmwareVersion)) {
             var currentVersion = new SemanticVersion(currentFirmwareVersion);
             var validVersion = new SemanticVersion(VALID_FIRMWARE_VERSION);
-            return currentVersion.isEqualOrLargerThan(validVersion);
+            return new ValidationResult(this.id, currentVersion.isEqualOrLargerThan(validVersion));
         }
-        return true;
+        return new ValidationResult(this.id, true);
     }
 
     private static class SemanticVersion {

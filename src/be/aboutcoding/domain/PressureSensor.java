@@ -33,12 +33,13 @@ public class PressureSensor implements FirmwareValidation {
     }
 
     @Override
-    public boolean hasValidFirmware() {
+    public ValidationResult hasValidFirmware() {
         try {
-            return Integer.parseInt(this.currentFirmwareVersion) >= VALID_FIRMWARE_VERSION;
+            var isValid =  Integer.parseInt(this.currentFirmwareVersion) >= VALID_FIRMWARE_VERSION;
+            return new ValidationResult(this.id, isValid);
         }
         catch(NumberFormatException formatException) {
-            return false;
+            return new ValidationResult(id, false);
         }
     }
 }

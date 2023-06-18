@@ -2,6 +2,7 @@ package be.aboutcoding;
 
 import be.aboutcoding.domain.FirmwareValidation;
 import be.aboutcoding.domain.TemperatureSensor;
+import be.aboutcoding.domain.ValidationResult;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,17 +18,18 @@ public class SensorValidationProcess {
 
     public void start(int... ids) {
         //Step 1: get sensors for the following ids
-        var temperatureSensors = repository.getSensorsWithIdIn(ids);
+        var sensors = repository.getSensorsWithIdIn(ids);
 
         //Step 2: validate all sensors
-        var invalidSensors = new ArrayList<>();
-        for (FirmwareValidation sensor : temperatureSensors) {
-            if (!sensor.hasValidFirmware()) {
-                invalidSensors.add(sensor);
+        var invalidSensors = new ArrayList<ValidationResult>();
+        for (FirmwareValidation sensor : sensors) {
+            var result = sensor.hasValidFirmware();
+            if (!result.isValid()) {
+                invalidSensors.add(result);
             }
         }
 
         //Step 3: give result feedback
-        invalidSensors.forEach(sensor -> System.out.println(sensor.getId() + " is invalid"));
+        invalidSensors.forEach(result -> System.out.println(result.getId() + " is invalid"));
     }
 }
